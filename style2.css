@@ -3,6 +3,13 @@
 */
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+:root {
+  --primary-clr: #3bba91;
+  --primary-clr-hover: #2e896c;
+}
+
+
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -44,20 +51,20 @@ a:focus {
 }
 
 .btn-info {
-  background-color: #3bba91;
+  background-color: var(--primary-clr);
 }
 
 .btn-info:hover {
-  background-color: #2e896c;
+  background-color: var;
 }
 
 .btn-dark {
-  background-color: #3bba91;
+  background-color: var(--primary-clr);
   border: none;
 }
 
 .btn-dark:hover {
-    background-color: #2e896c;
+    background-color: var;
 }
 
 .line {
@@ -84,7 +91,7 @@ span {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: #3bba91;
+  background: var(--primary-clr);
   color: #fff;
   transition: all 0.3s;
 }
@@ -136,7 +143,7 @@ span {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #3bba91;
+  background: var(--primary-clr);
 }
 
 .sidebar-header {
@@ -169,11 +176,11 @@ span {
   margin-right: 10px;
 }
 
-#sidebar ul li.active > a,
+/* #sidebar ul li.active > a,
 a[aria-expanded="true"] {
   color: #fff;
   background: #3bba91;
-}
+} */
 
 a[data-toggle="collapse"] {
   position: relative;
@@ -341,6 +348,6 @@ form > .button {
 }
 
 form > .button:hover {
-  background-color: #2e896c;
+  background-color: var;
   cursor: pointer;
 }
