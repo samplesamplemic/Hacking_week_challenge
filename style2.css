@@ -55,7 +55,7 @@ a:focus {
 }
 
 .btn-info:hover {
-  background-color: var;
+  background-color: var(--primary-clr-hover);
 }
 
 .btn-dark {
@@ -64,7 +64,7 @@ a:focus {
 }
 
 .btn-dark:hover {
-    background-color: var;
+    background-color: var(--primary-clr-hover);
 }
 
 .line {
@@ -168,7 +168,7 @@ span {
 }
 
 #sidebar ul li a:hover {
-  color: #3bba91;
+  color: var(--primary-clr);
   background: #fff;
 }
 
@@ -179,7 +179,7 @@ span {
 /* #sidebar ul li.active > a,
 a[aria-expanded="true"] {
   color: #fff;
-  background: #3bba91;
+  background: var(--primary-clr);
 } */
 
 a[data-toggle="collapse"] {
@@ -197,7 +197,7 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #3bba91;
+  background: var(--primary-clr);
 }
 
 ul.CTAs {
@@ -214,12 +214,12 @@ ul.CTAs a {
 
 a.download {
   background: #fff;
-  color: #3bba91;
+  color: var(--primary-clr);
 }
 
 a.article,
 a.article:hover {
-  background: #3bba91 !important;
+  background: var(--primary-clr) !important;
   color: #fff !important;
 }
 
@@ -344,10 +344,10 @@ form > .button {
   transition: background-color 0.4s ease;
   -webkit-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
-  background-color: #3bba91;
+  background-color: var(--primary-clr);
 }
 
 form > .button:hover {
-  background-color: var;
+  background-color: var(--primary-clr-hover);
   cursor: pointer;
 }
