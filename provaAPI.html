@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="dropdown">
+        <select class="dropdown-content">
+            <option value=""></option>
+        </select>
+    </div>
+    <div id="news">
+        <!-- <h1 id="titolo"></h1>
+        <h3 id="sito"></h3>
+        <img src="" alt="" id="img-articolo">
+        <p id="articolo"></p>
+        <a href="" id="sito-news"></a>
+        <p id="data-articolo"></p> -->
+    </div>
+</body>
+
+</html>
+<script>
+    const container = document.querySelector("#news")
+    const bottone = document.querySelector("#genera-news")
+    async function fetchArticolo() {
+        const response = await fetch("https://api.spaceflightnewsapi.net/v3/articles?_limit=30")
+        const element = await response.json()
+        element.forEach(element => {
+            let card = document.createElement("div")
+            container.appendChild(card)
+            let titolo = document.createElement("h1")
+            card.appendChild(titolo)
+            let sito = document.createElement("h3")
+            card.appendChild(sito)
+            let img = document.createElement("img")
+            card.appendChild(img)
+            let articolo = document.createElement("p")
+            card.appendChild(articolo)
+            let sitoNews = document.createElement("a")
+            card.appendChild(sitoNews)
+            let data = document.createElement("p")
+            card.appendChild(data)
+            titolo.textContent = element.title
+            sito.textContent = element.newsSite
+            img.setAttribute("src", element.imageUrl)
+
+            articolo.textContent = element.summary
+            sitoNews.textContent = "Read more"
+            sitoNews.setAttribute("href", element.url)
+            data.textContent = element.publishedAt
+        });
+    }
+
+    // async function createListTag() {
+    //     const response = await fetch("https://api.spaceflightnewsapi.net/v3/info")
+    //     const element = await response.json()
+    //     // console.log(element)
+    //     element.newsSites.forEach(element => {
+    //         const tag = document.createElement("option")
+    //         document.querySelector(".dropdown-content").appendChild(tag)
+    //         tag.innerHTML = element
+    //         tag.setAttribute("value", element)
+    //     });
+
+    // }
+
+    async function createListTagArticles() {
+        const response = await fetch("https://api.spaceflightnewsapi.net/v3/articles?_limit=1000")
+        const element = await response.json()
+        // console.log(element)
+        let siteList = []
+        element.forEach(element => {
+            if (!siteList.includes(element.newsSite)) {
+                siteList.push(element.newsSite)
+                const tag = document.createElement("option")
+                document.querySelector(".dropdown-content").appendChild(tag)
+                tag.innerHTML = element.newsSite
+                tag.setAttribute("value", element.newsSite)
+            }
+        });
+        console.log(siteList);
+    }
+
+    async function createListTagBlog() {
+        const response = await fetch("https://api.spaceflightnewsapi.net/v3/blogs?_limit=1000")
+        const element = await response.json()
+        // console.log(element)
+        let siteList = []
+        element.forEach(element => {
+            if (!siteList.includes(element.newsSite)) {
+                siteList.push(element.newsSite)
+                const tag = document.createElement("option")
+                document.querySelector(".dropdown-content").appendChild(tag)
+                tag.innerHTML = element.newsSite
+                tag.setAttribute("value", element.newsSite)
+            }
+        });
+        console.log(siteList);
+    }
+
+    async function createListTagReports() {
+        const response = await fetch("https://api.spaceflightnewsapi.net/v3/reports?_limit=1000")
+        const element = await response.json()
+        // console.log(element)
+        let siteList = []
+        element.forEach(element => {
+            if (!siteList.includes(element.newsSite)) {
+                siteList.push(element.newsSite)
+                const tag = document.createElement("option")
+                document.querySelector(".dropdown-content").appendChild(tag)
+                tag.innerHTML = element.newsSite
+                tag.setAttribute("value", element.newsSite)
+            }
+        });
+        console.log(siteList);
+    }
+
+    createListTagArticles()
+    // createListTagBlog()
+    // createListTagReports()
+
+    async function fetchArticoloSito(value) {
+        const response = await fetch(`https://api.spaceflightnewsapi.net/v3/articles?_limit=1000`)
+        const element = await response.json()
+        // console.log(element);
+        element.forEach(element => {
+            if (value == element.newsSite) {
+
+                let card = document.createElement("div")
+                container.appendChild(card)
+                let titolo = document.createElement("h1")
+                card.appendChild(titolo)
+                let sito = document.createElement("h3")
+                card.appendChild(sito)
+                let img = document.createElement("img")
+                card.appendChild(img)
+                let sitoNews = document.createElement("a")
+                card.appendChild(sitoNews)
+                let data = document.createElement("p")
+                card.appendChild(data)
+                titolo.textContent = element.title
+                sito.textContent = element.newsSite
+                img.setAttribute("src", element.imageUrl)
+                img.style.width = "200px"
+                img.style.height = "200px"
+                sitoNews.textContent = "Read more"
+                sitoNews.setAttribute("href", element.url)
+                data.textContent = element.publishedAt
+            }
+        });
+    }
+
+    let testSelect = document.querySelector('.dropdown-content');
+    testSelect.addEventListener('change', () => {
+        container.innerHTML = ""
+        fetchArticoloSito(testSelect.value)
+    })
+
+    async function fetchSite() {
+        const response = await fetch("https://api.spaceflightnewsapi.net/v3/info")
+        const element = await response.json()
+        console.log(element)
+    }
+
+
+</script>
