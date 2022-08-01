@@ -1,3 +1,14 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+:root {
+  --primary-clr: #3bba91;
+  --primary-clr-hover: #2e896c;
+}
+
+
+
 .bla{ 
     width: 15rem;
 }
@@ -38,6 +49,11 @@ tr{
 /* table>:not(caption)>*>* {
      padding: 0 !important } */
 
-.paginationjs-pages > ul > li {
+/* .paginationjs-pages > ul > li {
 
-     }
+     } */
+
+mark {
+    padding: 0 !important;
+}
+

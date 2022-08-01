@@ -1,8 +1,41 @@
 const container = document.querySelector("tbody");
 const bottone = document.querySelector("#genera-news");
+const search = document.querySelector(".search");
+const searchBtn = document.querySelector(".search-btn");
+const dataFilter = document.querySelector(".data-filter");
 let dat = [];
+let datfilter = [];
+//pagination
+function template(el) {
+  el.forEach((element) => {
+    let card = document.createElement("tr");
+    container.appendChild(card);
+    card.innerHTML = `
+             <td>${element.publishedAt.slice(0, 10)}</td>
+             <td class="title-news">${element.title}</td>
+             <td><a href = "${element.url}" target = '_blank'>Read more</a></td>
+             <td><a class="btn btn-primary bla2" data-toggle="popover" data-bs-trigger="focus" 
+             data-img="${element.imageUrl}" href=${
+      element.imageUrl
+    } target="_blank">View Image</a></td>
+             `;
 
-//fetch api and create pagination
+    $('[data-toggle="popover"]').popover({
+      html: true,
+      trigger: "hover",
+      placement: "left",
+      content: function () {
+        return (
+          '<img class="bla" src="' +
+          $(this).data("img") +
+          '" style="width:200px;" />'
+        );
+      },
+    });
+  });
+}
+
+//fetch api and pagination option
 async function fetchArticoloSito() {
   const response = await fetch(
     `https://api.spaceflightnewsapi.net/v3/articles?_limit=-1`
@@ -22,38 +55,6 @@ async function fetchArticoloSito() {
     }
   });
 
-  //pagination
-  function template(el) {
-    el.forEach((element) => {
-      // if(value == element.newsSite || value == 'qualsiasi') {
-      let card = document.createElement("tr");
-      container.appendChild(card);
-      card.innerHTML = `
-                 <td>${element.publishedAt.slice(0, 10)}</td>
-                 <td>${element.title}</td>
-                 <td><a href = "${
-                   element.url
-                 }" target = '_blank'>Read more</a></td>
-                 <td><a class="btn btn-primary bla2" data-toggle="popover" data-bs-trigger="focus" 
-                 data-img="${element.imageUrl}" href=${
-        element.imageUrl
-      } target="_blank">View Image</a></td>
-                 `;
-      $('[data-toggle="popover"]').popover({
-        html: true,
-        trigger: "hover",
-        placement: "left",
-        content: function () {
-          return (
-            '<img class="bla" src="' +
-            $(this).data("img") +
-            '" style="width:200px;" />'
-          );
-        },
-      });
-    });
-  }
-
   $("table").pagination({
     dataSource: dat,
     totalNumber: dat.length,
@@ -69,47 +70,40 @@ async function fetchArticoloSito() {
 
 fetchArticoloSito();
 
-//create pagination and filter news by News site in select element
+//btn - filter by date
+dataFilter.onclick = function a() {
+  dat = dat.reverse();
+
+  $("table").pagination({
+    dataSource: dat,
+    totalNumber: dat.length,
+    pageSize: 30,
+    callback: function (data, a) {
+      // template method of yourself
+      container.innerHTML = "";
+      var html = template(data);
+      $("tbody").html(html);
+    },
+  });
+};
+
+
+//filter news by News site in select element and pagination option
 let testSelect = document.querySelector(".dropdown-content");
 testSelect.addEventListener("change", () => {
   container.innerHTML = "";
-  let datfilter = [];
+ // let datfilter = [];
+ datfilter = [];
   dat.forEach((el) => {
     if (el.newsSite == testSelect.value) {
       datfilter.push(el);
+    } else if(testSelect.value == "qualsiasi"){
+      datfilter.push(el);
     }
   });
-
-  function template(el) {
-    el.forEach((element) => {
-      let card = document.createElement("tr");
-      container.appendChild(card);
-      card.innerHTML = `
-               <td>${element.publishedAt.slice(0, 10)}</td>
-               <td>${element.title}</td>
-               <td><a href = "${
-                 element.url
-               }" target = '_blank'>Read more</a></td>
-               <td><a class="btn btn-primary bla2" data-toggle="popover" data-bs-trigger="focus" 
-               data-img="${element.imageUrl}" href=${
-        element.imageUrl
-      } target="_blank">View Image</a></td>
-               `;
-
-      $('[data-toggle="popover"]').popover({
-        html: true,
-        trigger: "hover",
-        placement: "left",
-        content: function () {
-          return (
-            '<img class="bla" src="' +
-            $(this).data("img") +
-            '" style="width:200px;" />'
-          );
-        },
-      });
-    });
-  }
+  console.log(datfilter);
+  
+  //csv funcitonality
 
   $("table").pagination({
     dataSource: datfilter,
@@ -123,6 +117,29 @@ testSelect.addEventListener("change", () => {
     },
   });
 });
+
+//funcitonality search-bar
+searchBtn.onclick = function b() {
+  //container.innerHTML = "";
+  let datfilter2 = [];
+  let query = search.value.trim();
+  dat.forEach((el) => {
+    if (el.title.toLowerCase().includes(query.toLowerCase())) {
+      datfilter2.push(el);
+    }
+  });
+
+  $("table").pagination({
+    dataSource: datfilter2,
+    totalNumber: datfilter2.length,
+    pageSize: 30,
+    callback: function (data, a) {
+      container.innerHTML = "";
+      var html = template(data);
+      $("tbody").html(html);
+    },
+  });
+};
 
 //blog
 async function createListTagBlog() {
