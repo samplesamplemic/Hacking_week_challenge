@@ -1,5 +1,5 @@
 const container = document.querySelector("tbody");
-const bottone = document.querySelector("#genera-news");
+const btn = document.querySelector("#downloadbtn");
 const search = document.querySelector(".search");
 const searchBtn = document.querySelector(".search-btn");
 const dataFilter = document.querySelector(".data-filter");
@@ -104,6 +104,25 @@ testSelect.addEventListener("change", () => {
   console.log(datfilter);
   
   //csv funcitonality
+
+  function downloadbtn() {
+    let csv = "Data;Titolo;Url;Immagine\n";
+
+    for (let i = 0; i < datfilter.length; i += 4) {
+      csv += `${datfilter[i].publishedAt.slice(0, 10)};${datfilter[i].title};${
+        datfilter[i].imageUrl
+      };${datfilter[i].url}\n`;
+    }
+
+    let hiddenElement = document.createElement("a");
+    hiddenElement.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
+    hiddenElement.target = "_blank";
+
+    hiddenElement.download = "lista.csv";
+    hiddenElement.click();
+  }
+
+  btn.addEventListener("click", downloadbtn);
 
   $("table").pagination({
     dataSource: datfilter,
