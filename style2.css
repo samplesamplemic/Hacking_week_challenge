@@ -9,7 +9,6 @@
   --primary-clr-hover: #2e896c;
 }
 
-
 body {
   font-family: "Poppins", sans-serif !important;
   background: #fafafa !important;
@@ -31,7 +30,6 @@ p {
   transition: all 0.3s;
 }
 
-
 .navbar {
   padding: 15px 10px;
   background: #fff;
@@ -47,8 +45,8 @@ p {
   border: none;
 }
 
-.button{
-    background-color: red;
+.button {
+  background-color: red;
 }
 
 .btn-info {
@@ -57,15 +55,6 @@ p {
 
 .btn-info:hover {
   background-color: var(--primary-clr-hover) !important;
-}
-
-.btn-dark {
-  background-color: var(--primary-clr);
-  border: none;
-}
-
-.btn-dark:hover {
-    background-color: var(--primary-clr-hover);
 }
 
 .line {
@@ -177,6 +166,14 @@ span {
   margin-right: 10px;
 }
 
+.list-unstyled li a {
+  color: #fff;
+}
+
+.list-unstyled li a:hover {
+  text-decoration: none;
+}
+
 /* #sidebar ul li.active > a,
 a[aria-expanded="true"] {
   color: #fff;
@@ -233,6 +230,30 @@ a.article:hover {
   padding: 20px;
   min-height: 100vh;
   transition: all 0.3s;
+}
+
+tbody .bla2 {
+  background-color: #3bba91;
+  border: none;
+}
+
+tbody .bla2:hover {
+  background-color: #2e896c;
+}
+
+tbody td a {
+  color: #343a40;
+  /* text-decoration: underline; */
+}
+
+tbody td a:hover {
+  color: #2e896c;
+  font-size: 17px;
+  border-top: none;
+}
+
+.p-2 {
+  gap: 1rem;
 }
 
 /* ---------------------------------------------------

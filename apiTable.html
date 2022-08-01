@@ -133,21 +133,25 @@
             </div>
           </div>
         </nav>
-        <button class="data-filter">order data</button>
-        <div class="dropdown">
-          <select class="dropdown-content">
-            <option value="qualsiasi">All News</option>
+        <div class="d-flex p-2">
+          <select class="dropdown-content btn btn btn-info">
+            <option value="qualsiasi">
+              All News
+            </option>
           </select>
+          <button class="data-filter btn btn btn-info">Order by data</button>
+          <button class="btn btn btn-info" id="downloadbtn">
+            Download CSV file
+          </button>
         </div>
-        <button id="downloadbtn">Scarica</button>
         <div id="news">
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Title</th>
-                <th scope="col">News</th>
-                <th scope="col">Image</th>
+                <th scope="col">DATE</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">NEWS</th>
+                <th scope="col">IMAGE</th>
               </tr>
             </thead>
             <tbody></tbody>

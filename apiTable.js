@@ -87,22 +87,21 @@ dataFilter.onclick = function a() {
   });
 };
 
-
 //filter news by News site in select element and pagination option
 let testSelect = document.querySelector(".dropdown-content");
 testSelect.addEventListener("change", () => {
   container.innerHTML = "";
- // let datfilter = [];
- datfilter = [];
+  // let datfilter = [];
+  datfilter = [];
   dat.forEach((el) => {
     if (el.newsSite == testSelect.value) {
       datfilter.push(el);
-    } else if(testSelect.value == "qualsiasi"){
+    } else if (testSelect.value == "qualsiasi") {
       datfilter.push(el);
     }
   });
   console.log(datfilter);
-  
+
   //csv funcitonality
 
   function downloadbtn() {
