@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./apiTable.css">
+  <script type="text/javascript" src="./chart.js" defer></script>
+  <title>Document</title>
+  <style>
+    .chart {
+      width: 55rem;
+      padding: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dropdown">
+    <select class="dropdown-content">
+      <option value="qualsiasi">All News</option>
+    </select>
+  </div>
+  <div id="container-load">loading...
+    <span id="content-load"></span>
+  </div>
+  <div class="chart">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
+
+
+</body>
+
+</html>

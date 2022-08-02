@@ -14,9 +14,10 @@
 }
 
 td, th {
-   margin: 2rem 2rem !important; 
+   margin: 1rem 2rem !important; 
    text-align: center !important;
-   align-self: end;
+   display: flex;
+   align-self: flex-start;
 }
 
 tr{
@@ -37,7 +38,7 @@ tr{
 }
 
 :is(th, td):nth-child(4){
-    flex-basis: 10%;
+    flex-basis: 20%;
 }
 
 .paginationjs-pages > ul {
@@ -57,3 +58,29 @@ mark {
     padding: 0 !important;
 }
 
+@media screen and (max-width: 1200px) {
+    td, th {
+        margin: 0.5rem !important; }
+    
+}
+
+div#container-load {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+@keyframes spin{
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+#content-load{
+    height: 2rem;
+    width: 2rem;
+    border: 0.5rem solid black;
+    border-top-color: lightblue;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}

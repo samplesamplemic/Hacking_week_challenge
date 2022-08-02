@@ -3,6 +3,8 @@ const btn = document.querySelector("#downloadbtn");
 const search = document.querySelector(".search");
 const searchBtn = document.querySelector(".search-btn");
 const dataFilter = document.querySelector(".data-filter");
+const load = document.querySelector('#content-load');
+const load2 = document.querySelector('#container-load');
 let dat = [];
 let datfilter = [];
 //pagination
@@ -37,11 +39,18 @@ function template(el) {
 
 //fetch api and pagination option
 async function fetchArticoloSito() {
-  const response = await fetch(
+  try
+  { const response = await fetch(
     `https://api.spaceflightnewsapi.net/v3/articles?_limit=-1`
   );
-  const element = await response.json();
+  const element = await response.json(); 
   dat = element;
+  datfilter = element;
+} catch(err){
+  console.log(err);
+} finally {
+  load.style.display = 'none';
+  load2.style.display = 'none';
 
   //create select element with News Site of API
   let siteList = [];
@@ -65,13 +74,13 @@ async function fetchArticoloSito() {
       var html = template(data);
       $("tbody").html(html);
     },
-  });
+  }); }
 }
 
 fetchArticoloSito();
 
 //btn - filter by date
-dataFilter.onclick = function a() {
+dataFilter.onclick = function () {
   dat = dat.reverse();
 
   $("table").pagination({
@@ -87,6 +96,27 @@ dataFilter.onclick = function a() {
   });
 };
 
+ //csv funcitonality
+function downloadbtn() {
+  
+ let csv = "Data;Titolo;Url;Immagine\n";
+ console.log(datfilter);
+ 
+ 
+  datfilter.forEach(el => { 
+    csv += `${el.publishedAt.slice(0, 10)};${el.title};${el.imageUrl };${el.url}\n`})
+    
+   let hiddenElement = document.createElement("a");
+  hiddenElement.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
+  
+  hiddenElement.target = "_blank";
+
+  hiddenElement.download = "lista.csv";
+  hiddenElement.click();
+  
+}
+
+btn.addEventListener("click", downloadbtn);
 
 //filter news by News site in select element and pagination option
 let testSelect = document.querySelector(".dropdown-content");
@@ -104,24 +134,6 @@ testSelect.addEventListener("change", () => {
   console.log(datfilter);
   
   //csv funcitonality
-
-  function downloadbtn() {
-    let csv = "Data;Titolo;Url;Immagine\n";
-
-    for (let i = 0; i < datfilter.length; i += 4) {
-      csv += `${datfilter[i].publishedAt.slice(0, 10)};${datfilter[i].title};${
-        datfilter[i].imageUrl
-      };${datfilter[i].url}\n`;
-    }
-
-    let hiddenElement = document.createElement("a");
-    hiddenElement.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
-    hiddenElement.target = "_blank";
-
-    hiddenElement.download = "lista.csv";
-    hiddenElement.click();
-  }
-
   btn.addEventListener("click", downloadbtn);
 
   $("table").pagination({
@@ -138,7 +150,7 @@ testSelect.addEventListener("change", () => {
 });
 
 //funcitonality search-bar
-searchBtn.onclick = function b() {
+searchBtn.onclick = function () {
   //container.innerHTML = "";
   let datfilter2 = [];
   let query = search.value.trim();
