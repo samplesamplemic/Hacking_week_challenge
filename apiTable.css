@@ -7,44 +7,55 @@
   --primary-clr-hover: #2e896c;
 }
 
-
-
-.bla{ 
-    width: 15rem;
+.bla {
+  width: 15rem;
 }
 
-td, th {
-   margin: 1rem 2rem !important; 
-   text-align: center !important;
-   display: flex;
-   align-self: flex-start;
+.table thead th {
+  justify-content: center;
 }
 
-tr{
-    display: flex;
-    width: 100%;
+td,
+th {
+  margin: 1rem 2rem;
+  text-align: center !important;
+  align-self: flex-start;
 }
 
-:is(th, td):nth-child(1){
-    flex-basis: 10%;
+tr {
+  display: flex;
+  width: 100%;
 }
 
-:is(th, td):nth-child(2){
-    flex-basis: 50%;
+:is(th, td):nth-child(1) {
+  flex-basis: 15%;
 }
 
-:is(th, td):nth-child(3){
-    flex-basis: 10%;
+:is(th, td):nth-child(2) {
+  flex-basis: 50%;
 }
 
-:is(th, td):nth-child(4){
-    flex-basis: 20%;
+:is(th, td):nth-child(3) {
+  flex-basis: 15%;
+}
+
+:is(th, td):nth-child(4) {
+  flex-basis: 20%;
+}
+
+.paginationjs-pages > ul a {
+  color: black;
+}
+
+.paginationjs-pages > ul a:hover {
+  color: #3bba91;
+  font-size: 17px;
 }
 
 .paginationjs-pages > ul {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
 }
 
 /* table>:not(caption)>*>* {
@@ -55,13 +66,14 @@ tr{
      } */
 
 mark {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 @media screen and (max-width: 1200px) {
-    td, th {
-        margin: 0.5rem !important; }
-    
+  td,
+  th {
+    margin: 0.5rem !important;
+  }
 }
 
 /* div#container-load {
