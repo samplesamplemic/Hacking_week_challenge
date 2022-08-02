@@ -57,6 +57,11 @@ p {
   background-color: var(--primary-clr-hover) !important;
 }
 
+.btn-info option {
+  background-color: white;
+  color: black;
+}
+
 .line {
   width: 100%;
   height: 1px;
@@ -374,6 +379,3 @@ form > .button:hover {
   background-color: var(--primary-clr-hover);
   cursor: pointer;
 }
-
-
-
