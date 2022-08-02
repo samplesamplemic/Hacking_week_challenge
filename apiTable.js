@@ -96,7 +96,6 @@ dataFilter.onclick = function () {
   });
 };
 
-<<<<<<< HEAD
  //csv funcitonality
 function downloadbtn() {
   
@@ -119,8 +118,6 @@ function downloadbtn() {
 
 btn.addEventListener("click", downloadbtn);
 
-=======
->>>>>>> 73452c1aa99788e6100a7d4ffdbfb3a9e97a3ba3
 //filter news by News site in select element and pagination option
 let testSelect = document.querySelector(".dropdown-content");
 testSelect.addEventListener("change", () => {
