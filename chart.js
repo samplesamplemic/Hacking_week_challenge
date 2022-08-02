@@ -1,6 +1,8 @@
-const load = document.querySelector('#content-load');
-const load2 = document.querySelector('#container-load');
+const load = document.querySelector('#spinner');
+//const load2 = document.querySelector('#container-load');
 let datafilter = [];
+let month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Dicember'];
+       
 async function chart() {
     try {
         const response = await fetch('https://api.spaceflightnewsapi.net/v3/articles?_limit=-1');
@@ -11,7 +13,7 @@ async function chart() {
         console.log(err);
     } finally {
         load.style.display = 'none';
-        load2.style.display = 'none';
+        //load2.style.display = 'none';
 
         let arrMonth = []
         let nameSite = [];
@@ -19,6 +21,7 @@ async function chart() {
             arrMonth.push(Number(i.publishedAt.slice(5, 7)));
             nameSite.push(i.newsSite);
         }
+        console.log(arrMonth);
         let objMonth = arrMonth.reduce(function (a, b) {
             if (b in a) {
                 a[b]++
@@ -28,6 +31,7 @@ async function chart() {
             return a;
         }, {});
         console.log(objMonth);
+        
 
         let objSite = nameSite.reduce(function (a, b) {
             if (b in a) {
@@ -42,20 +46,29 @@ async function chart() {
         let x = Object.keys(objMonth);
         console.log(y);
         
+        let month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Dicember'];
         const ctx = document.getElementById('canvas').getContext("2d")
         let myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: x,
+                labels: month,
                 datasets: [{
-                    backgroundColor: 'hsl(10, 79%, 65%)',
+                    label: 'Articles per month',
+                    backgroundColor: '#2e896c',
                     data: y,
                 }]
             },
             options: {
+                indexAxis: 'y',
                 y: {
                     beginAtZero: true
-                }
+                },
+                ooltips: {
+                    callbacks: {
+                      label: month
+                    }
+                  },
+                
             }
         })
 
@@ -114,7 +127,7 @@ async function chart() {
             console.log(y);
             
 
-            myChart.data.labels = x;
+            myChart.data.labels = month;
             myChart.data.datasets[0].data = y;
             myChart.update();
         };

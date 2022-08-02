@@ -3,8 +3,8 @@ const btn = document.querySelector("#downloadbtn");
 const search = document.querySelector(".search");
 const searchBtn = document.querySelector(".search-btn");
 const dataFilter = document.querySelector(".data-filter");
-const load = document.querySelector('#content-load');
-const load2 = document.querySelector('#container-load');
+const load = document.querySelector('#spinner');
+//const load2 = document.querySelector('#container-load');
 let dat = [];
 let datfilter = [];
 //pagination
@@ -50,7 +50,7 @@ async function fetchArticoloSito() {
   console.log(err);
 } finally {
   load.style.display = 'none';
-  load2.style.display = 'none';
+  //load2.style.display = 'none';
 
   //create select element with News Site of API
   let siteList = [];
@@ -122,17 +122,17 @@ btn.addEventListener("click", downloadbtn);
 let testSelect = document.querySelector(".dropdown-content");
 testSelect.addEventListener("change", () => {
   container.innerHTML = "";
- // let datfilter = [];
- datfilter = [];
+  // let datfilter = [];
+  datfilter = [];
   dat.forEach((el) => {
     if (el.newsSite == testSelect.value) {
       datfilter.push(el);
-    } else if(testSelect.value == "qualsiasi"){
+    } else if (testSelect.value == "qualsiasi") {
       datfilter.push(el);
     }
   });
   console.log(datfilter);
-  
+
   //csv funcitonality
   btn.addEventListener("click", downloadbtn);
 

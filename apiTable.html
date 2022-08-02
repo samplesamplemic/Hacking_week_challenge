@@ -15,6 +15,9 @@
       crossorigin="anonymous"
     /> -->
     <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -98,18 +101,7 @@
               <i class="fas fa-align-left"></i>
               <span></span>
             </button>
-            <!-- <button
-              class="btn btn-dark d-inline-block d-lg-none ml-auto"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fas fa-align-justify"></i>
-            </button> -->
-
+            
             <div id="navbarSupportedContent">
               <form action="">
                 <input
@@ -133,24 +125,33 @@
             </div>
           </div>
         </nav>
-        <button class="data-filter">order data</button>
-        <div class="dropdown">
-          <select class="dropdown-content">
-            <option value="qualsiasi">All News</option>
+        <div class="d-flex p-2 dropdown">
+          <select class="dropdown-content btn btn btn-info">
+            <option value="qualsiasi">
+              All News
+            </option>
           </select>
+          <button class="data-filter btn btn btn-info">Order by data</button>
+          <button class="btn btn btn-info" id="downloadbtn">
+            Download CSV file
+          </button>
         </div>
-        <button id="downloadbtn">Scarica</button>
-        <div id="news">
+        <!-- <div id="news">
           <div id="container-load">loading...
           <span id="content-load"></span>
-          </div>
+          </div> -->
+          <div class="d-flex justify-content-center">
+            <div id="spinner"  class="spinner-border m-5 text-success" role="status">
+              <span  class="sr-only">Loading...</span>
+            </div>
+            </div>
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Title</th>
-                <th scope="col">News</th>
-                <th scope="col">Image</th>
+                <th scope="col">DATE</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">NEWS</th>
+                <th scope="col">IMAGE</th>
               </tr>
             </thead>
             <tbody></tbody>

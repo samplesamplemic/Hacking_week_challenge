@@ -64,7 +64,7 @@ mark {
     
 }
 
-div#container-load {
+/* div#container-load {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -83,4 +83,4 @@ div#container-load {
     border-top-color: lightblue;
     border-radius: 50%;
     animation: spin 1.5s infinite linear;
-}
+} */
