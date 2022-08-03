@@ -7,7 +7,7 @@ body {
 }
 
 #calendar {
-  height: 83vh;
+  height: 82vh;
   width: min(100% - 5vw);
   margin: 0 auto;
 }
