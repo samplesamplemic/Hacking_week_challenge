@@ -143,7 +143,7 @@ async function chart() {
                   }
                   const totalvalue = datapoints.reduce(totalSum, 0);
                   const percentageValue = (value / totalvalue * 100).toFixed(1);
-                  const display = [`${percentageValue}%,\nArticles:${value}`]
+                  const display = [`${percentageValue}%`]
                   return display;
                 }
               }
