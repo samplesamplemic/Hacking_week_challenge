@@ -62,6 +62,7 @@ a.fc-daygrid-event {
 
 a.fc-daygrid-event:hover {
   color: rgb(49, 49, 49);
+  z-index: 20;
 }
 
 .fc-timegrid-event {
