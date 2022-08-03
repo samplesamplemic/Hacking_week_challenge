@@ -1,0 +1,6 @@
+.chart {
+  display: flex;
+  justify-content: center;
+  width: 55rem;
+  padding: 0.5rem;
+}
