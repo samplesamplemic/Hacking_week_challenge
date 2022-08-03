@@ -57,6 +57,11 @@ p {
   background-color: var(--primary-clr-hover) !important;
 }
 
+.btn-info option {
+  background-color: white;
+  color: black;
+}
+
 .line {
   width: 100%;
   height: 1px;
@@ -233,24 +238,40 @@ a.article:hover {
   transition: all 0.3s;
 }
 
-tbody .bla2 {
+.table tbody .bla2 {
   background-color: #3bba91;
   border: none;
 }
 
-tbody .bla2:hover {
+.table tbody .bla2:hover {
   background-color: #2e896c;
 }
 
-tbody td a {
-  color: #343a40;
-  /* text-decoration: underline; */
+.table tbody a {
+  color: #000000;
 }
 
-tbody td a:hover {
+.table tbody td a:hover {
   color: #2e896c;
   font-size: 17px;
   border-top: none;
+}
+
+.table tbody .bla2 {
+  color: #ffffff;
+}
+
+.table tbody .bla2 {
+  color: #ffffff;
+}
+
+.table tbody .bla2:hover {
+  color: #ffffff;
+}
+
+.table tbody .bla2:focus {
+  color: #ffffff;
+  background-color: #2e896c !important;
 }
 
 .p-2 {
@@ -374,6 +395,3 @@ form > .button:hover {
   background-color: var(--primary-clr-hover);
   cursor: pointer;
 }
-
-
-
