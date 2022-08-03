@@ -73,7 +73,7 @@ async function fetchArticoloSito() {
       document.querySelector(".select-year").appendChild(tag);
       tag.innerHTML = element.publishedAt.slice(0, 4);
       tag.setAttribute("value", element.publishedAt.slice(0, 4));
-    } console.log(yearList);
+    } 
   });
 
   $("table").pagination({
@@ -112,7 +112,7 @@ dataFilter.onclick = function () {
 function downloadbtn() {
   
  let csv = "Data;Titolo;Url;Immagine\n";
- console.log(datfilter);
+ 
  
  
   datfilter.forEach(el => { 
@@ -143,7 +143,7 @@ testSelect.addEventListener("change", () => {
       datfilter.push(el);
     }
   });
-  console.log(datfilter);
+  
 
   //csv funcitonality
   btn.addEventListener("click", downloadbtn);
@@ -174,8 +174,7 @@ selectYear.addEventListener("change", () => {
       datfilter.push(el);
     }
   });
-  console.log(datfilter);
-
+  
   //csv funcitonality
   btn.addEventListener("click", downloadbtn);
 
@@ -215,40 +214,3 @@ searchBtn.onclick = function () {
   });
 };
 
-//blog
-async function createListTagBlog() {
-  const response = await fetch(
-    "https://api.spaceflightnewsapi.net/v3/blogs?_limit=100"
-  );
-  const element = await response.json();
-  let siteList = [];
-  element.forEach((element) => {
-    if (!siteList.includes(element.newsSite)) {
-      siteList.push(element.newsSite);
-      const tag = document.createElement("option");
-      document.querySelector(".dropdown-content").appendChild(tag);
-      tag.innerHTML = element.newsSite;
-      tag.setAttribute("value", element.newsSite);
-    }
-  });
-  console.log(siteList);
-}
-
-//reports
-async function createListTagReports() {
-  const response = await fetch(
-    "https://api.spaceflightnewsapi.net/v3/reports?_limit=100"
-  );
-  const element = await response.json();
-  let siteList = [];
-  element.forEach((element) => {
-    if (!siteList.includes(element.newsSite)) {
-      siteList.push(element.newsSite);
-      const tag = document.createElement("option");
-      document.querySelector(".dropdown-content").appendChild(tag);
-      tag.innerHTML = element.newsSite;
-      tag.setAttribute("value", element.newsSite);
-    }
-  });
-  console.log(siteList);
-}

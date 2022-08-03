@@ -62,13 +62,6 @@ tr {
   list-style: none;
 }
 
-/* table>:not(caption)>*>* {
-     padding: 0 !important } */
-
-/* .paginationjs-pages > ul > li {
-
-     } */
-
 mark {
   padding: 0 !important;
 }
@@ -89,29 +82,22 @@ mark {
   table td, .table th {
     padding: 0.75rem 0.5rem !important;
   }
-  
+
   tr > th {
     text-align: inherit;
   }
 }
 
-/* div#container-load {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+@media screen and (max-width: 600px) {
+  
+  th:nth-child(2){
+    flex-basis: 36%;
+  }
 }
-@keyframes spin{
-    100%{
-        transform: rotate(360deg);
-    }
-    
+
+@media screen and (max-width: 500px) {
+  
+  th:nth-child(2){
+    flex-basis: 31%;
+  }
 }
-#content-load{
-    height: 2rem;
-    width: 2rem;
-    border: 0.5rem solid black;
-    border-top-color: lightblue;
-    border-radius: 50%;
-    animation: spin 1.5s infinite linear;
-} */
