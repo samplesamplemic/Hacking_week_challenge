@@ -6,7 +6,7 @@ html, body {
   }
 
   #calendar {
-    height: 83vh;
+    height: 86vh;
     width: min(100% - 5vw);
     margin: 0 auto;
   }
@@ -55,10 +55,18 @@ a.fc-daygrid-event.fc-daygrid-block-event.fc-h-event.fc-event.fc-event-start.fc-
   font-size: 14px;
 }
 
-a.fc-timegrid-event.fc-v-event.fc-event.fc-event-start.fc-event-end.fc-event-past {
-  background-color: #3bba91;
-  border-color: #3bba91;
+a.fc-daygrid-event {
+  color: black;
 }
+
+a.fc-daygrid-event:hover {
+  color: rgb(49, 49, 49);
+}
+
+.fc-timegrid-event {
+  background-color: #3bba91 !important;
+  border: 1px solid #3bba91 !important;
+} 
 
 a.fc-timegrid-event.fc-v-event.fc-event.fc-event-start.fc-event-end.fc-event-past:hover {
   font-size: 12px;
