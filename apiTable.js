@@ -52,7 +52,7 @@ async function fetchArticoloSito() {
   load.style.display = 'none';
   //load2.style.display = 'none';
 
-  //create select element with News Site of API
+  //create select element with News Site 
   let siteList = [];
   dat.forEach((element) => {
     if (!siteList.includes(element.newsSite)) {
@@ -62,6 +62,18 @@ async function fetchArticoloSito() {
       tag.innerHTML = element.newsSite;
       tag.setAttribute("value", element.newsSite);
     }
+  });
+
+  //create select element with publication year 
+  let yearList = [];
+  dat.forEach((element) => {
+    if (!yearList.includes(element.publishedAt.slice(0, 4))) {
+      yearList.push(element.publishedAt.slice(0, 4));
+      const tag = document.createElement("option");
+      document.querySelector(".select-year").appendChild(tag);
+      tag.innerHTML = element.publishedAt.slice(0, 4);
+      tag.setAttribute("value", element.publishedAt.slice(0, 4));
+    } console.log(yearList);
   });
 
   $("table").pagination({
@@ -128,6 +140,37 @@ testSelect.addEventListener("change", () => {
     if (el.newsSite == testSelect.value) {
       datfilter.push(el);
     } else if (testSelect.value == "qualsiasi") {
+      datfilter.push(el);
+    }
+  });
+  console.log(datfilter);
+
+  //csv funcitonality
+  btn.addEventListener("click", downloadbtn);
+
+  $("table").pagination({
+    dataSource: datfilter,
+    totalNumber: datfilter.length,
+    pageSize: 30,
+    callback: function (data, a) {
+      // template method of yourself
+      container.innerHTML = "";
+      var html = template(data);
+      $("tbody").html(html);
+    },
+  });
+});
+
+//filter news by year in select element and pagination option
+let selectYear = document.querySelector(".select-year");
+selectYear.addEventListener("change", () => {
+  container.innerHTML = "";
+  // let datfilter = [];
+  datfilter = [];
+  dat.forEach((el) => {
+    if (el.publishedAt.slice(0, 4) == selectYear.value) {
+      datfilter.push(el);
+    } else if (selectYear.value == "all-years") {
       datfilter.push(el);
     }
   });

@@ -395,3 +395,15 @@ form > .button:hover {
   background-color: var(--primary-clr-hover);
   cursor: pointer;
 }
+
+
+
+/* a {
+  background-color: #3bba91;
+}
+a > div:hover {
+ z-index: 99;
+display: contents;
+background-color: red;
+background-color: #3bba91;
+} */
