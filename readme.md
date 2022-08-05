@@ -1,6 +1,6 @@
 # Team Project  || Develhope
 
-![design preview](./readMe-img/design.png);
+![design preview](./readMe-img/design.png)
 
 ## Hacking week challenge - FS4
 
