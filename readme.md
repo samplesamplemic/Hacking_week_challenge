@@ -13,7 +13,7 @@
 - [Michele La Torre](https://github.com/samplesamplemic)
 
 
-### Bot 
+### Bot Discord
 
 ![design preview](./readMe-img/design-bot.png)
 
