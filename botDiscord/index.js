@@ -6,7 +6,7 @@ dotenv.config()
 
 
 client.on('ready', () => {
-    client.channels.fetch('1004758028165333065')
+    client.channels.fetch('your_channel_id_here')
         .then(channel => {
             channel.send("Ciao! Sono il tuo bot sulle notizie spaziali :rocket: \n Questi sono i miei comandi:\n - /articles ⇒ ritorna gli ID tutti gli articoli \n - /articles/authors ⇒ ritorna la lista di autori o della provenienza degli articoli \n - /articles/{id} ⇒ ritorna il testo dell’articolo");
         })
@@ -45,7 +45,7 @@ client.on("messageCreate", async (msg) => {
         // console.log(data);
        // msg.reply(data.title);
         if (data.summary != "" && onlynum.test(msg.content)) {
-            client.channels.fetch("1004758028165333065").then((channel) => {
+            client.channels.fetch("your_channel_id_here").then((channel) => {
               const embed = new Discord.MessageEmbed()
                 .setColor(0xefff00)
                 .setTitle(data.title)
@@ -55,7 +55,7 @@ client.on("messageCreate", async (msg) => {
               channel.send({ embeds: [embed] });
             });
           } else {
-            client.channels.fetch("1004758028165333065").then((channel) => {
+            client.channels.fetch("your_channel_id_here").then((channel) => {
               const embed = new Discord.MessageEmbed()
                 .setColor(0xefff00)
                 .setTitle(data.title)
